@@ -1,16 +1,12 @@
 "use server";
 
 import { auth } from "@/auth";
-import { SignInButton } from "@/components/sign-in-button";
+import { redirect } from "next/navigation";
 
-export default async function Login() {
+export default async function Page() {
   const session = await auth();
-  console.log('session: ', session);
-  return (
-    <div>
-      <p>
-        You are not signed in <SignInButton />
-      </p>
-    </div>
-  )
+  if (session) {
+    redirect("/home");
+  }
+  redirect("/signin");
 }

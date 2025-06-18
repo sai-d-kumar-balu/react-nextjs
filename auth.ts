@@ -5,7 +5,10 @@ import type { Provider } from "next-auth/providers"
 
 const providers: Provider[] = [
     Credentials({
-        credentials: { password: { label: "Password", type: "password" } },
+        credentials: {
+            email: { label: "Email", type: "email" },
+            password: { label: "Password", type: "password" }
+        },
         authorize(c) {
             console.log('c: ', c);
             if (c.password !== "password") return null
@@ -37,7 +40,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
     callbacks: {
         async redirect({ url, baseUrl }) {
-            // keep in‑app URLs intact, else always go to /home
             return url.startsWith("/") ? `${baseUrl}${url}` : `${baseUrl}/home`;
         },
     },
