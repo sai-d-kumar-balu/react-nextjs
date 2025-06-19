@@ -2,6 +2,7 @@ import NextAuth from "next-auth"
 import GitHub from "next-auth/providers/github"
 import Credentials from "next-auth/providers/credentials"
 import type { Provider } from "next-auth/providers"
+import Google from "next-auth/providers/google"
 
 const providers: Provider[] = [
     Credentials({
@@ -19,7 +20,17 @@ const providers: Provider[] = [
             }
         },
     }),
-    GitHub,
+    GitHub({
+        clientId: process.env.AUTH_GITHUB_ID,
+        clientSecret: process.env.AUTH_GITHUB_SECRECT
+    }),
+    Google({
+        clientId: process.env.AUTH_GOOGLE_ID,
+        clientSecret: process.env.AUTH_GOOGLE_SECRECT,
+        profile(profile) {
+            return profile;
+        },
+    }),
 ]
 
 export const providerMap = providers
