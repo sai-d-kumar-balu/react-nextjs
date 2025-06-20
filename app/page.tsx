@@ -11,7 +11,7 @@ const portfolioData = {
     name: "Saikumar Balu",
     title: "Full Stack Developer (MERN / MEAN)",
     subtitle: "Crafting digital experiences with code and creativity",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+    image: "/portfolio/saikumar-balu.jpg",
     resume: "/documents/saikumar-balu-resume.pdf"
   },
   about: {
